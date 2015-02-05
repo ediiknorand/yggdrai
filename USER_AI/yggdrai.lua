@@ -58,12 +58,12 @@ cmd_state[CONST.CMD_MOVE] = function(actor, x, y, ...)
 end
 
 cmd_state[CONST.CMD_STOP] = function(actor, ...)
-  Move(actor.gid, actor.xy)
+  Move(actor.gid, unpack(actor.xy))
 end
 
-cmd_state[CONST.CMD_ATTACK] = function(actor, target, ...)
-  Move(actor.gid, actor.xy)
-  Attack(actor.gid, target.gid)
+cmd_state[CONST.CMD_ATTACK] = function(actor, target_gid, ...)
+  Move(actor.gid, unpack(actor.xy))
+  Attack(actor.gid, target_gid)
 end
 
 cmd_state[CONST.CMD_ATTACK_AREA] = function(actor, x, y, ...)
