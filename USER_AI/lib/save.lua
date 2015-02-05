@@ -26,7 +26,7 @@ SOFTWARE.
 
 -- Dependencies
 -- Global
-SAVE = {}
+local SAVE = {}
 -- Const
 local AI_PATH = "AI\\USER_AI\\"
 -- Util
