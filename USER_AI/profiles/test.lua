@@ -1,20 +1,12 @@
 -- Dependencies
 require "./AI/USER_AI/actor.lua"
 -- Global
+local ST = dofile("./AI/USER_AI/lib/state.lua")
 -- Const
-
--- States
-local function stInit(me)
-  MoveToOwner(me.gid)
-end
-
-local function stFollow(me, target)
-  Move(me.gid, unpack(target.xy))
-end
-
+-- Custom States
 -- Transition Table
 local ftran = {}
-ftran[stInit] = function(me)
+ftran[ST.follow] = function(me)
   local disguised
   getActors(function(actor)
     if actor == 'player' and actor.canAttack then
@@ -22,7 +14,7 @@ ftran[stInit] = function(me)
     end
   end)
   if disguised then
-    return stFollow, {me, disguised}
+    return ST.chase, {me, disguised}
   end
 end
 -- Command Handler
@@ -30,7 +22,7 @@ local fcmd = 'default'
 
 -- Initializer
 local function test_profile(me, ...)
-  return ftran, fcmd, stInit, {me}
+  return ftran, fcmd, ST.follow, {me}
 end
 
 return test_profile
