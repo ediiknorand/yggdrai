@@ -139,10 +139,10 @@ merclass_actor_metatable.__index = function(actor,key)
   end
   if key == 'class' then
     local class,confirm = getClass(actor.gid)
-    if confirm then
+    if class and confirm then
       rawset(actor,'class',class)
+      return class
     end
-    return class
   end
   return actor_index_f(actor, key)
 end
