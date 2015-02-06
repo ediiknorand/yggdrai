@@ -25,7 +25,7 @@ SOFTWARE.
 --]]
 
 -- Dependencies
-require "./AI/USER_AI/actor.lua"
+require "AI\\USER_AI\\actor"
 -- Constants
 local GID_BASE = 110000000
 local GID_SHIFT = 0

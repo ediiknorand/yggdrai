@@ -1,5 +1,5 @@
 -- Dependencies
-require "./AI/USER_AI/actor.lua"
+require "AI\\USER_AI\\actor"
 -- Global
 local ST = dofile("./AI/USER_AI/lib/state.lua")
 -- Const

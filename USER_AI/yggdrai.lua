@@ -23,8 +23,19 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 --]]
+-- More version-friendly require
+OLD_REQUIRE = require
+function require(path)
+  if _VERSION == "Lua 5.0" then
+    local p = string.gsub(path, "\\", "/")
+    OLD_REQUIRE("./"..p..".lua")
+  else
+    OLD_REQUIRE(path)
+  end
+end
+
 -- dependencies
-require "./AI/USER_AI/actor.lua" -- global dependency
+require "AI\\USER_AI\\actor" -- global dependency
 
 -- const
 local CONST = {}
