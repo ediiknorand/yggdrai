@@ -59,6 +59,27 @@ CONST.MGM              = 106
 CONST.MPENGINEER       = 107
 CONST.MISIS            = 108
 local actor_time = {}
+local rider_class = {
+  [13] = 7,
+  [21] = 14,
+  [4014] = 4008,
+  [4022] = 4015,
+  [4036] = 4030,
+  [4044] = 4037,
+  [4048] = 4047, -- star gladiator rides the AIR!
+  [4080] = 4054,
+  [4081] = 4060,
+  [4082] = 4066,
+  [4083] = 4073,
+  [4084] = 4056,
+  [4085] = 4062,
+  [4086] = 4058,
+  [4087] = 4064,
+  [4109] = 4096,
+  [4110] = 4102,
+  [4111] = 4098,
+  [4112] = 4100,
+}
 
 -- util
 local function copytable_shallow(t, mt)
@@ -146,7 +167,17 @@ local actor_getv = {
   end,
   class = function(gid)
     local lclass = GetV(V_CLASS, gid)
-    return lclass or actor_getv.merclass(gid)
+    if not lclass then
+      return actor_getv.merclass(gid)
+    end
+    if gid < GID_PLAYER_LIMIT then
+      return rider_class[lclass] or lclass
+    end
+    return lclass
+  end,
+  rider = function(gid)
+    local lclass = GetV(V_CLASS, gid)
+    return lclass and (gid < GID_PLAYER_LIMIT) and rider_class[lclass]
   end,
   range = function(gid)
     return GetV(V_RANGE, gid)
@@ -218,7 +249,7 @@ local actor_getv = {
     end
   end,
   canAttack = function(gid)
-    return IsMonster(gid)
+    return IsMonster(gid) ~= 0
   end,
   t = function(gid)
     return actor_time[gid]()
