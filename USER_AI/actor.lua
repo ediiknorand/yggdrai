@@ -362,31 +362,51 @@ actor_metatable = {
 }
 
 -- Actors Metatable
+local actors_method = {
+  nearest = function(actors)  -- Returns the nearest actor from actor a (returns a function with a as parameter)
+    return function(a)
+      local n,d,dactor
+      if type(a) == 'number' then
+        dactor = getActor(a)
+      elseif type(a) == 'table' and type(a.gid) == 'number' and a.gid > 0 then
+        dactor = a
+      else
+        return nil
+      end
+      for _,actor in pairs(actors) do
+        if type(actor) == 'table' and actor.gid and actor ~= dactor then
+          local d_tmp = distAA(dactor, actor)
+          if not d or d_tmp < d then
+	    n,d = actor,d_tmp
+	  end
+        end
+      end
+      return n,d
+    end
+  end,
+  target = function(actors) -- Returns a group composed with targets of the group actors
+    local result = {}
+    setmetatable(result, actors_metatable)
+    for gid,actor in pairs(actors) do
+      if type(actor.target) == 'table' and type(actor.target.gid) == 'number' and actor.target.gid > 0 then
+        result = result + actor.target
+      end
+    end
+    return result
+  end,
+  n = function(actors) -- Returns the number of elements in actors
+    local count = 0
+    for _,_ in pairs(actors) do
+      count = count + 1
+    end
+    return count
+  end,
+}
+
 actors_metatable = {
   __index = function(actors, key)
-    if key == 'nearest' then
-      return function(a)
-        local n
-	local d
-	local dactor
-	if type(a) == 'number' then
-	  dactor = getActor(a)
-	elseif type(a) == 'table' and type(a.gid) == 'number' and a.gid > 0 then
-	  dactor = a
-	else
-	  return nil
-	end
-        for _,actor in pairs(actors) do
-          if type(actor) == 'table' and actor.gid and actor ~= dactor then
-	    local d_tmp = distAA(dactor, actor)
-	    if not d or d_tmp < d then
-	      d = d_tmp
-	      n = actor
-	    end
-	  end
-	end
-	return n,d
-      end
+    if key and actors_method[key] then
+      return actors_method[key](actors)
     end
   end,
   __div = function(left, right) -- filter by type/class
