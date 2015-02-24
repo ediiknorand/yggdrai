@@ -463,6 +463,22 @@ actors_metatable = {
     end
     return result
   end,
+  __mul = function(left, right) -- intersection
+    if type(left) ~= 'table' or type(right) ~= 'table' then
+      return
+    end
+    if left.gid or right.gid then
+      return
+    end
+    local result = {}
+    setmetatable(result, actors_metatable)
+    for _,actor in pairs(left) do
+      if type(actor) == 'table' and actor.gid and right[actor.gid] then
+        result = result + actor
+      end
+    end
+    return result
+  end,
   __unm = function(actors)
     return getActors() - actors
   end,
