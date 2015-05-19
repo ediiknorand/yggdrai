@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@localhost" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#AUTHOR">AUTHOR</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<pre><code>     yggdrai = initialize and execute a YggdrAI processing tick</code></pre>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code>     local yggdrai = dofile(&#39;./AI/USER_AI/yggdrai.lua&#39;)
+
+     yggdrai(path_to_profile, my_gid)</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<ul>
+
+<p>The <b>yggdrai()</b> function initializes, during its first call, and executes a YggdrAI processing tick.</p>
+
+<p>Loading <b>yggdrai.lua</b> also declares functions such as <b>getActor</b>, <b>newActor</b>, <b>getActors</b>, <b>newGroup</b> to Lua&#39;s global envionment. <b>require()</b> is also changed upon <b>yggdrai.lua</b> loading to a more version-friendly function.</p>
+
+<p>During its first call, <b>yggdrai()</b> loads a profile file specified by <b>path_to_profile</b> and generates an actor object from <b>my_gid</b>. This actor object is passed as argument to the functions defined by <b>profile</b>.</p>
+
+<p><b>yggdrai()</b> also manages the state transitions and the command handlers defined by <b>profile</b>. Each processing tick executes the current state transition function and the current stage function.</p>
+
+</ul>
+
+<h1 id="AUTHOR">AUTHOR</h1>
+
+<pre><code>    Edii Knorand - &lt;https://github.com/ediiknorand/&gt;</code></pre>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<ul>
+
+<p><a href="file:actor_object.html">Actor Object</a>, <a href="file:actors_group.html">Actor Group</a></p>
+
+</ul>
+
+
+</body>
+
+</html>
+
+
