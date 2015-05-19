@@ -1,0 +1,80 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@localhost" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#FUNCTIONS">FUNCTIONS</a></li>
+  <li><a href="#AUTHOR">AUTHOR</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<pre><code>      save - a module to access persistent memory</code></pre>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code>      local SAVE = dofile(&#39;./AI/USER_AI/lib/save.lua&#39;)</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<ul>
+
+<p><b>save</b> is a module that implements a simple API to access memory in disk space. The data is saved as a <b>lua</b> file at &quot;<b>./AI/USER_AI/save/OWNER_GID-HOMUN_CLASS/</b>&quot; directory.</p>
+
+<p>If the homunculus evolves and the previous data is required, you must rename the with its new homunculus class.</p>
+
+</ul>
+
+<h1 id="FUNCTIONS">FUNCTIONS</h1>
+
+<dl>
+
+<dt id="get-actor-key"><b>get(actor, key)</b></dt>
+<dd>
+
+<p>Reads the data pointed by <b>key</b>.</p>
+
+<p><b>actor</b> should be the homunculus/mercenary actor object.</p>
+
+</dd>
+<dt id="put-actor-key-data"><b>put(actor, key, data)</b></dt>
+<dd>
+
+<p>Writes <b>data</b> in a <b>lua</b> file and indexes it by <b>key</b>.</p>
+
+<p><b>actor</b> should be the homunculus/mercenary actor object.</p>
+
+</dd>
+</dl>
+
+<h1 id="AUTHOR">AUTHOR</h1>
+
+<pre><code>    Edii Knorand - &lt;https://github.com/ediiknorand/&gt;</code></pre>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<ul>
+
+<p><a href="file:yggdrai.html">YggdrAI</a></p>
+
+</ul>
+
+
+</body>
+
+</html>
+
+

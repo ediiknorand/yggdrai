@@ -1,0 +1,258 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@localhost" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a>
+    <ul>
+      <li><a href="#Attributes">Attributes</a></li>
+      <li><a href="#Methods">Methods</a></li>
+      <li><a href="#Operators">Operators</a></li>
+    </ul>
+  </li>
+  <li><a href="#AUTHOR">AUTHOR</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<pre><code>     getActor, newActor - create an actor object</code></pre>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code>     local actor = getActor(gid)
+     local actor = newActor()</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<ul>
+
+<p>The <b>getActor()</b> function returns a new actor object with the gid <b>gid</b>.</p>
+
+<p>The <b>newActor()</b> function returns an empty actor object which represents no actual actor.</p>
+
+</ul>
+
+<h2 id="Attributes">Attributes</h2>
+
+<dl>
+
+<dt id="pos"><b>pos</b></dt>
+<dd>
+
+<p>An array that contains the actor&#39;s <b>x</b>,<b>y</b> coordinates.</p>
+
+</dd>
+<dt id="xy"><b>xy</b></dt>
+<dd>
+
+<p>Same as <b>pos</b>.</p>
+
+</dd>
+<dt id="x"><b>x</b></dt>
+<dd>
+
+<p>Actor&#39;s <b>x</b> coordinate.</p>
+
+</dd>
+<dt id="y"><b>y</b></dt>
+<dd>
+
+<p>Actor&#39;s <b>y</b> coordinate.</p>
+
+</dd>
+<dt id="target"><b>target</b></dt>
+<dd>
+
+<p>Actor&#39;s target (also an actor object).</p>
+
+</dd>
+<dt id="motion"><b>motion</b></dt>
+<dd>
+
+<p>A number that represents the actor&#39;s current motion value. (See <b>const</b>)</p>
+
+</dd>
+<dt id="dead"><b>dead</b></dt>
+<dd>
+
+<p>A boolean value that states the current health condition of actor. (or if their are missing)</p>
+
+</dd>
+<dt id="owner"><b>owner</b></dt>
+<dd>
+
+<p>Actor&#39;s owner. (Note: It&#39;ll only return the player&#39;s gid)</p>
+
+</dd>
+<dt id="class"><b>class</b></dt>
+<dd>
+
+<p>A number that represents the characters class. (See <b>const</b>)</p>
+
+</dd>
+<dt id="mobid"><b>mobid</b></dt>
+<dd>
+
+<p>Same as <b>class</b>.</p>
+
+</dd>
+<dt id="rider"><b>rider</b></dt>
+<dd>
+
+<p>A boolean value that represents if actor is riding (or if it&#39;s a flying taekwon master).</p>
+
+</dd>
+<dt id="range"><b>range</b></dt>
+<dd>
+
+<p>Actor&#39;s attack range.</p>
+
+</dd>
+<dt id="hp"><b>hp</b></dt>
+<dd>
+
+<p>Actor&#39;s current HP.</p>
+
+</dd>
+<dt id="sp"><b>sp</b></dt>
+<dd>
+
+<p>Actor&#39;s current SP.</p>
+
+</dd>
+<dt id="maxhp"><b>maxhp</b></dt>
+<dd>
+
+<p>Actor&#39;s maximum HP.</p>
+
+</dd>
+<dt id="maxsp"><b>maxsp</b></dt>
+<dd>
+
+<p>Actor&#39;s maximum SP.</p>
+
+</dd>
+<dt id="merclass"><b>merclass</b></dt>
+<dd>
+
+<p>Actor&#39;s class. (See <b>const</b>)</p>
+
+</dd>
+<dt id="canAttack"><b>canAttack</b></dt>
+<dd>
+
+<p>A boolean value that states if the actor is attackable. (More precisely, if the player&#39;s cursor becomes a sword icon)</p>
+
+</dd>
+<dt id="t"><b>t</b></dt>
+<dd>
+
+<p>Time in seconds since the first time this actor was detected.</p>
+
+</dd>
+</dl>
+
+<h2 id="Methods">Methods</h2>
+
+<dl>
+
+<dt id="dist-actor"><b>dist(actor)</b></dt>
+<dd>
+
+<p>Returns the distance between the actor whose the method was called and <b>actor</b>.</p>
+
+</dd>
+<dt id="skillrange-skill-skill_level"><b>skillrange(skill, skill_level)</b></dt>
+<dd>
+
+<p>Returns the maximum distance between the homunculus/mercenary and the actor necessary to cast <b>skill</b> with level <b>skill_level</b>.</p>
+
+</dd>
+<dt id="sr-skill-skill_level"><b>sr(skill, skill_level)</b></dt>
+<dd>
+
+<p>Same as <b>skillrange()</b>.</p>
+
+</dd>
+<dt id="skillrangepos-skill-skill_level"><b>skillrangepos(skill, skill_level)</b></dt>
+<dd>
+
+<p>Returns an array that contains what&#39;ll be the new position of the homunculus/mercenary if they cast <b>skill</b> with level <b>skill_level</b> at the actor. (Note: Only available in renewal)</p>
+
+</dd>
+<dt id="srxy-skill-skill_level"><b>srxy(skill, skill_level)</b></dt>
+<dd>
+
+<p>Same as <b>skillrangepos()</b>.</p>
+
+</dd>
+<dt id="srx-skill-skill_level"><b>srx(skill, skill_level)</b></dt>
+<dd>
+
+<p>Returns the <b>x</b> coordinate of the new position of the homunculus/mercenary if they cast <b>skill</b> with level <b>skill_level</b> at the actor.</p>
+
+</dd>
+<dt id="sry-skill-skill_level"><b>sry(skill, skill_level)</b></dt>
+<dd>
+
+<p>Returns the <b>y</b> coordinate of the new position of the homunculus/mercenary if they cast <b>skill</b> with level <b>skill_level</b> at the actor.</p>
+
+</dd>
+</dl>
+
+<h2 id="Operators">Operators</h2>
+
+<dl>
+
+<dt id="Addition"><b>Addition (+)</b></dt>
+<dd>
+
+<p>If the right operand is an actor object, returns a new actor group with both actors in it.</p>
+
+</dd>
+<dt id="Equals"><b>Equals (==)</b></dt>
+<dd>
+
+<p>Compares if both actor objects correspond to the same actor.</p>
+
+</dd>
+<dt id="Exponentiation"><b>Exponentiation (^)</b></dt>
+<dd>
+
+<p>Return a boolean value that states if the actor has the second operand as a target.</p>
+
+<p>If the second operand is a string (&#39;player&#39;, &#39;summon&#39;, &#39;pet&#39;, &#39;monster&#39;, &#39;npc&#39;, &#39;warp&#39; or &#39;unknown&#39;), tests the target&#39;s type. If the second operand is an number, tests the target&#39;s class. If the second operand is an actor object, tests if this actor object is the actor&#39;s target.</p>
+
+</dd>
+</dl>
+
+<h1 id="AUTHOR">AUTHOR</h1>
+
+<pre><code>    Edii Knorand - &lt;https://github.com/ediiknorand/&gt;</code></pre>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<ul>
+
+<p><a href="file:actors_group.html">Actor Groups</a></p>
+
+</ul>
+
+
+</body>
+
+</html>
+
+

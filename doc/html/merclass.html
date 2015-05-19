@@ -1,0 +1,92 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@localhost" />
+</head>
+
+<body>
+
+
+
+<ul id="index">
+  <li><a href="#NAME">NAME</a></li>
+  <li><a href="#SYNOPSIS">SYNOPSIS</a></li>
+  <li><a href="#DESCRIPTION">DESCRIPTION</a></li>
+  <li><a href="#FUNCTIONS">FUNCTIONS</a></li>
+  <li><a href="#AUTHOR">AUTHOR</a></li>
+  <li><a href="#SEE-ALSO">SEE ALSO</a></li>
+</ul>
+
+<h1 id="NAME">NAME</h1>
+
+<pre><code>     merclass - a module that tries to fix the Mercenary AI behavior</code></pre>
+
+<h1 id="SYNOPSIS">SYNOPSIS</h1>
+
+<pre><code>     local MERCLASS = dofile(&#39;./AI/USER_AI/lib/merclass.lua&#39;)</code></pre>
+
+<h1 id="DESCRIPTION">DESCRIPTION</h1>
+
+<ul>
+
+<p><b>merclass</b> is a module that implements an actor object with a different <b>class</b> method. The original <b>class</b> only works with homunculus (and the correspondent GetV call) or can only recognize only the Mercenary&#39;s class.</p>
+
+<p><b>Important note</b>: Currently, only suports players.</p>
+
+</ul>
+
+<h1 id="FUNCTIONS">FUNCTIONS</h1>
+
+<dl>
+
+<dt id="getActor-gid"><b>getActor(gid)</b></dt>
+<dd>
+
+<p>Creates an actor object from the gid <b>gid</b>.</p>
+
+<p>This actor object has a special <b>class</b> method, that tries to guess the actor&#39;s class (since their original GetV call only works with homunculus).</p>
+
+</dd>
+<dt id="getActors-foreach"><b>getActors([foreach])</b></dt>
+<dd>
+
+<p>Creates an actor group object from the all detectable actors with the custom actor class method. Optionally, it can receive a <b>foreach</b> function that executes for each actor.</p>
+
+</dd>
+<dt id="shift-n"><b>shift(n)</b></dt>
+<dd>
+
+<p>Sets the difference between <b>GID_BASE</b> (default: <b>110000000</b>) and the gid of the first spawned mob (default: Prontera&#39;s Wild Rose).</p>
+
+</dd>
+<dt id="ROversion-version"><b>ROversion(version)</b></dt>
+<dd>
+
+<p>Sets the major RO update version for compatibility.</p>
+
+<p><b>version</b> should be &#39;<b>pre-renewal</b>&#39; or &#39;<b>renewal</b>.&#39;</p>
+
+</dd>
+</dl>
+
+<h1 id="AUTHOR">AUTHOR</h1>
+
+<pre><code>    Edii Knorand - &lt;https://github.com/ediiknorand/&gt;</code></pre>
+
+<h1 id="SEE-ALSO">SEE ALSO</h1>
+
+<ul>
+
+<p><a href="file:actor_object.html">Actor Object</a>, <a href="file:actors_group.html">Actor Group</a>, <a href="file:yggdrai.html">YggdrAI</a></p>
+
+</ul>
+
+
+</body>
+
+</html>
+
+
